@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-A-Sketch</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Etch-A-Sketch</h2>
+    <div class="flexContainer">
+      <div class="grid-container" id="grid"></div>
+    </div>
+    <div class="buttonItem">
+      <input
+        type="range"
+        name="weight"
+        id="range_weight"
+        value="6"
+        min="1"
+        max="3900"
+        oninput="updateOutput(this)"
+      />
+      <output id="range_weight_disp"></output>
+      <input
+        id="rainbow"
+        class="btn btn-primary btnRainbow"
+        type="button"
+        value="Rainbow Input"
+        onclick="rainbowBtn()";
+      />
+      <input
+        id="default"
+        class="btn btn-primary"
+        type="button"
+        value="Default color"
+        onclick="defaultBtn()";
+      />
+      <input
+        id="clear"
+        class="btn btn-secondary"
+        type="button"
+        value="Clear Grid"
+        id="clear"
+        onclick="clearGrid()";
+      />
+      Choose a color
+      <input
+        id="pickColor"
+        class="btn btn-primary"
+        type="color"
+        value="Pick a Color"
+        
+      />
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

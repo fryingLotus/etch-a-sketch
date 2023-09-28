@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #grid {
+        display: grid;
+        width: 100%;
+        height: 100%;
+      }
+      .cell {
+        background-color: #ccc;
+        border: 1px solid black;
+      }
+      .mainContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        width: 500px;
+        border: 1px solid black;
+      }
+      #range_weight {
+        align-self: center;
+        width: 10%; /* or any other value that suits your 
+    design */
+        margin-bottom: 50px;
+      }
+    </style>
+    <script>
+      function updateOutput(range) {
+        let output = document.getElementById("range_weight_disp");
+        let grid = document.getElementById("grid");
+        grid.innerHTML = ""; // Clear the existing grid
+        let rows, cols;
+        if (range.value <= 50) {
+          output.value = "4x4";
+          rows = cols = 4;
+        } else if (range.value <= 100) {
+          output.value = "8x8";
+          rows = cols = 8;
+        } else if (range.value <= 150) {
+          output.value = "12x12";
+          rows = cols = 12;
+        } else {
+          output.value = "16x16";
+          rows = cols = 16;
+        }
+        createGrid(rows, cols);
+      }
+      function createGrid(rows, cols) {
+        let grid = document.getElementById("grid");
+        grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+        grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+        for (let i = 0; i < rows * cols; i++) {
+          let cell = document.createElement("div");
+          cell.className = "cell";
+          grid.append(cell);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input
+      type="range"
+      name="weight"
+      id="range_weight"
+      value="6"
+      min="1"
+      max="256"
+      oninput="updateOutput(this)"
+    />
+    <output id="range_weight_disp"></output>
+    <div class="mainContainer">
+      <div id="grid"></div>
+    </div>
+  </body>
+</html>
